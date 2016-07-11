@@ -30,6 +30,7 @@ main (int argc, char *argv[])
   printf ("# Compiled with unknown compiler\n");
 #endif
   print_env_var("TEST_ENV_VARIABLES");
+  print_env_var("TEST_ENV_VARIABLE_IN_TRAVIS_YML");
   print_env_var("TRAVIS_OS_NAME");
   print_env_var("HOME");
   print_env_var("HOSTNAME");
