@@ -8,6 +8,13 @@ os:
 env:
   - TEST_ENV_VARIABLE_IN_TRAVIS_YML=14
   - TEST_ENV_VARIABLE_IN_TRAVIS_YML=21
+
+addons:
+  apt:
+    packages:
+      - pkg-config
+      - libcppunit-dev
+
 script:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
   - make test
