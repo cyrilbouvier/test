@@ -25,6 +25,9 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew install python flex bison cppunit ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew ls --versions pkg-config; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew ls --versions azeqsdf; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew outdated azer; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew outdated pkg-config; fi
+# do which [-s ??] package || brew install package
 
 script:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
