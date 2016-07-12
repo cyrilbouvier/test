@@ -9,11 +9,20 @@ env:
   - TEST_ENV_VARIABLE_IN_TRAVIS_YML=14
   - TEST_ENV_VARIABLE_IN_TRAVIS_YML=21
 
+# only works on linux
 addons:
   apt:
     packages:
-      - pkg-config
+      - python
+      - flex
+      - bison
       - libcppunit-dev
+      - pkg-config
+
+# need this to install dependencies on osx
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew install python flex bison cppunit pkg-config
 
 script:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
