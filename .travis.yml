@@ -24,7 +24,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then
       brew update
       # We add || exit 0 because brew exit with an error if a package is already
-      # installed and cannot be updated
+      # installed and cannot be updated.
       brew install python flex bison cppunit pkg-confiig || exit 0 #
     fi
 
