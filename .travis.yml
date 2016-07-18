@@ -17,12 +17,12 @@ addons:
       - flex
       - bison
       - libcppunit-dev
-      - pkg-config
 
 # need this to install dependencies on osx
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install python flex bison cppunit pkg-config; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install python flex bison cppunit; fi
 
 script:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
   - make test
+  - pkg-config --version
