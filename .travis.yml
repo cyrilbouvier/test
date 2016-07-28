@@ -15,11 +15,11 @@ osx_image: xcode7.3
 addons:
   apt:
     packages:
-      - gcc-4.8
+      - python
 
 # need this to install dependencies on osx
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install gcc-4.8; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install gcc48; fi
 
 script:
   - whereis gcc
