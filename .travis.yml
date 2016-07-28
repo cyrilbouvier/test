@@ -26,6 +26,7 @@ before_install:
 
 script:
   - whereis gcc
+  - ls -l /usr/bin/*gcc*
   - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
   - make test
   - pkg-config --version
