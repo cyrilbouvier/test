@@ -19,8 +19,8 @@ addons:
 
 # need this to install dependencies on osx
 before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew search cppunit ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install gcc48; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew search cppunit ; fi
 
 
 
