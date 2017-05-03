@@ -20,6 +20,7 @@ addons:
 # need this to install dependencies on osx
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew search cppunit ; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install cppunit@1.13.1 || brew install cppunit@1.13 ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install gcc48; fi
 
 
