@@ -62,7 +62,8 @@ matrix:
       - brew install autoconf libtool
 
 install:
-  - export CXX="$COMPILER"
+  - export CXX=$CCX${COMPILER_VERSION+:-${COMPILER_VERSION}}
+  - export CC=$CC${COMPILER_VERSION+:-${COMPILER_VERSION}}
 
 script:
   - echo $CC
