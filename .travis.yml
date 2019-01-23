@@ -8,6 +8,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env: COMPILER=g++-4.9
+      env: CC=toto
       addons:
         apt:
           sources:
@@ -22,6 +23,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env: COMPILER=g++-5
+      env: CC=toto
       addons:
         apt:
           sources:
@@ -36,6 +38,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env: COMPILER=g++-6
+      env: CC=toto
       addons:
         apt:
           sources:
@@ -48,6 +51,7 @@ matrix:
     - os: osx
       compiler: clang
       env: COMPILER=clang++
+      env: CC=toto
       before_install:
       - brew update
       - brew uninstall automake && brew install automake
