@@ -56,8 +56,8 @@ matrix:
       - brew install autoconf libtool
 
 install:
-  - export CXX=$CCX${GCC_VERSION+:-${GCC_VERSION}}
-  - export CC=$CC${GCC_VERSION+:-${GCC_VERSION}}
+  - export CXX=${CCX}${GCC_VERSION:+-${GCC_VERSION}}
+  - export CC=${CC}${GCC_VERSION:+-${GCC_VERSION}}
 
 script:
   - echo $CC
