@@ -7,8 +7,9 @@ matrix:
       sudo: required
       dist: trusty
       compiler: gcc
-      env: COMPILER=g++-4.9
-      env: CC=toto
+      env:
+        - COMPILER=g++-4.9
+        - CC=toto
       addons:
         apt:
           sources:
@@ -22,8 +23,9 @@ matrix:
       sudo: required
       dist: trusty
       compiler: gcc
-      env: COMPILER=g++-5
-      env: CC=toto
+      env:
+        - COMPILER=g++-5
+        - CC=toto
       addons:
         apt:
           sources:
@@ -37,8 +39,9 @@ matrix:
       sudo: required
       dist: trusty
       compiler: gcc
-      env: COMPILER=g++-6
-      env: CC=toto
+      env:
+        - COMPILER=g++-6
+        - CC=toto
       addons:
         apt:
           sources:
@@ -50,8 +53,9 @@ matrix:
 
     - os: osx
       compiler: clang
-      env: COMPILER=clang++
-      env: CC=toto
+      env:
+        - COMPILER=clang++
+        - CC=toto
       before_install:
       - brew update
       - brew uninstall automake && brew install automake
