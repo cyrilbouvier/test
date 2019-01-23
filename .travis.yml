@@ -59,6 +59,7 @@ install:
 script:
   - echo $CC
   - echo $CXX
-  - ln -s /usr/bin/gcc
-  - ln -s /usr/bin/g++
+  - ls -s /usr/bin/gcc
+  - ls -s /usr/bin/g++
   - gcc --version
+  - g++ --version
