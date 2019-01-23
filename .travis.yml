@@ -59,7 +59,12 @@ install:
 script:
   - echo $CC
   - echo $CXX
-  - ls -s /usr/bin/gcc
-  - ls -s /usr/bin/g++
+  - ls -l /usr/bin/gcc
+  - ls -l /usr/bin/g++
+  - gcc --version
+  - g++ --version
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/$CCX 90
+  - ls -l /usr/bin/gcc
+  - ls -l /usr/bin/g++
   - gcc --version
   - g++ --version
