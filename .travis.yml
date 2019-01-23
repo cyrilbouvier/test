@@ -1,34 +1,64 @@
-language: C
-compiler:
-  - gcc
-  - clang
-os:
-  - linux
-  - osx
-env:
-  - TEST_ENV_VARIABLE_IN_TRAVIS_YML=14
-  - TEST_ENV_VARIABLE_IN_TRAVIS_YML=21
+language: cpp
+sudo: required
 
-osx_image: xcode8.3
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+      compiler: gcc
+      env: COMPILER=g++-4.9
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - g++-4.9
+          - libgmp-dev
+          - libgmpxx4ldbl
 
-# only works on linux
-addons:
-  apt:
-    packages:
-      - python
+    - os: linux
+      sudo: required
+      dist: trusty
+      compiler: gcc
+      env: COMPILER=g++-5
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - g++-5
+          - libgmp-dev
+          - libgmpxx4ldbl
 
-# need this to install dependencies on osx
-before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew search cppunit ; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install cppunit@1.13.1 || brew install cppunit@1.13 ; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] ; then brew update ; brew install gcc48; fi
+    - os: linux
+      sudo: required
+      dist: trusty
+      compiler: gcc
+      env: COMPILER=g++-6
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - g++-6
+          - libgmp-dev
+          - libgmpxx4ldbl
 
+    - os: osx
+      compiler: clang
+      env: COMPILER=clang++
+      before_install:
+      - brew update
+      - brew uninstall automake && brew install automake
+      - brew install autoconf libtool
 
+install:
+  - export CXX="$COMPILER"
 
 script:
-  - whereis gcc
-  - ls -l /usr/bin/*gcc*
-  - /usr/bin/gcc --version
-  - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
-  - make test
-  - pkg-config --version
+  - echo $CC
+  - echo $CXX
+  - ln -s /usr/bin/gcc
+  - ln -s /usr/bin/g++
+  - gcc --version
