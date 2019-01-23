@@ -8,8 +8,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env:
-        - COMPILER=g++-4.9
-        - CC=toto
+        - GCC_VERSION=4.9
       addons:
         apt:
           sources:
@@ -24,8 +23,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env:
-        - COMPILER=g++-5
-        - CC=toto
+        - GCC_VERSION=5
       addons:
         apt:
           sources:
@@ -40,8 +38,7 @@ matrix:
       dist: trusty
       compiler: gcc
       env:
-        - COMPILER=g++-6
-        - CC=toto
+        - GCC_VERSION=6
       addons:
         apt:
           sources:
@@ -53,17 +50,14 @@ matrix:
 
     - os: osx
       compiler: clang
-      env:
-        - COMPILER=clang++
-        - CC=toto
       before_install:
       - brew update
       - brew uninstall automake && brew install automake
       - brew install autoconf libtool
 
 install:
-  - export CXX=$CCX${COMPILER_VERSION+:-${COMPILER_VERSION}}
-  - export CC=$CC${COMPILER_VERSION+:-${COMPILER_VERSION}}
+  - export CXX=$CCX${GCC_VERSION+:-${GCC_VERSION}}
+  - export CC=$CC${GCC_VERSION+:-${GCC_VERSION}}
 
 script:
   - echo $CC
