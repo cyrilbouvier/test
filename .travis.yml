@@ -5,7 +5,7 @@ matrix:
   include:
     - os: linux
       sudo: required
-      dist: trusty
+      dist: bionic
       compiler: gcc
       env:
         - GCC_VERSION=4.9
@@ -20,7 +20,7 @@ matrix:
 
     - os: linux
       sudo: required
-      dist: trusty
+      dist: bionic
       compiler: gcc
       env:
         - GCC_VERSION=5
@@ -35,7 +35,7 @@ matrix:
 
     - os: linux
       sudo: required
-      dist: trusty
+      dist: bionic
       compiler: gcc
       env:
         - GCC_VERSION=6
@@ -58,6 +58,7 @@ matrix:
 install:
   - export CXX=${CXX}${GCC_VERSION:+-${GCC_VERSION}}
   - export CC=${CC}${GCC_VERSION:+-${GCC_VERSION}}
+  - apt install texlive-full
 
 script:
   - echo $CC
