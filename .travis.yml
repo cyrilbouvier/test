@@ -8,21 +8,6 @@ matrix:
       dist: bionic
       compiler: gcc
       env:
-        - GCC_VERSION=4.9
-      addons:
-        apt:
-          sources:
-          - ubuntu-toolchain-r-test
-          packages:
-          - g++-4.9
-          - libgmp-dev
-          - libgmpxx4ldbl
-
-    - os: linux
-      sudo: required
-      dist: bionic
-      compiler: gcc
-      env:
         - GCC_VERSION=5
       addons:
         apt:
@@ -32,6 +17,7 @@ matrix:
           - g++-5
           - libgmp-dev
           - libgmpxx4ldbl
+          - texlive-full
 
     - os: linux
       sudo: required
@@ -58,7 +44,6 @@ matrix:
 install:
   - export CXX=${CXX}${GCC_VERSION:+-${GCC_VERSION}}
   - export CC=${CC}${GCC_VERSION:+-${GCC_VERSION}}
-  - apt install texlive-full
 
 script:
   - echo $CC
